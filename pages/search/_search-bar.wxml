@@ -1,0 +1,30 @@
+<template name="search-bar">
+  <view class="wxMovieHeader {{from === 'movie' ? 'white-bg' : ''}}">
+    <navigator url="/pages/citys/citys" class="change-city" wx:if="{{city && city.nm}}" hover-class="none">
+      <image src="/images/map.png"></image>
+      <text>{{city && city.nm}}{{mallName && ' - '+mallName}}</text>
+    </navigator>
+    <view class="srach-input" data-type="show" catchtap="onTapNavi" data-url="/pages/search/index?type={{type}}">
+      <image src="/images/search-icon.png"></image>
+      <text>搜影片、搜影院</text>
+    </view>
+  </view>
+  <include src="../citys/_city-button-toast.wxml" />
+</template>
+<template name="city-error">
+  <view wx:if="{{isShowCityErrorPage}}" class="error-page city-error-page middle-center-page">
+    <image src="/images/lost.png" />
+    <text class="title">自动定位失败，请手动选择城市</text>
+    <navigator url="/pages/citys/citys">选择城市</navigator>
+  </view>
+</template>
+<template name="city-error-modal">
+  <modal hidden="{{!isShowOpenLocationAlertMoal}}" bindconfirm="closeOpenLocationAlertMoal" confirm-text="知道了" no-cancel>
+    <view class="title emphasize">未开启定位服务</view>
+    <view class="content">请进入系统设置中开启定位服务：设置 > 隐私 > 定位服务 > 微信 > 开启定位服务</view>
+  </modal>
+  <modal hidden="{{!isShowUseLocationCityConfirmModal}}" bindconfirm="onUseLocationCity" confirm-text="切换" bindcancel="closeUseLocationCityConfirmModal">
+    <!-- <view class="check-city-text emphasize">当前城市是{{locationCity && locationCity.nm}}，是否切换城市？</view> -->
+    <view class="check-city-text emphasize">定位到您最近的广场是{{locationCity && locationCity.nm}}{{mallDialogInfo && mallDialogInfo}}，是否切换至该广场？</view>
+  </modal>
+</template>

@@ -1,0 +1,51 @@
+<view class="page-mine">
+    <view class="mod-bg-primary mine-user">
+        <image class="banner" src="/assets/images/mine-banner.jpg" />
+        <view class="mod-flexbox-c user-box">
+            <view class="mod-img120120-radius images">
+                <image mod="aspectFill" src="{{userInfo.avatarUrl}}" />
+            </view>
+            <view wx:if="{{userInfo.nickName}}" class="mod-flex-1">
+                <text class="title">{{userInfo.nickName}}</text>
+            </view>
+            <view class="mod-flexbox-c tool">
+                <view class="mod-icons-ask"></view>
+                <view class="mod-icons-service" bindtap="contact"></view>
+            </view>
+        </view>
+    </view>
+    <view class="mod-flexbox-c mine-menu">
+        <view class="item mod-flex-1" catchtap="onTapNavi" data-url="/pages/membercard/cards">
+            <view class="icon mod-icon-cards-movies"></view><text class="title">观影卡</text><text class="desc">{{count1 / 100}}元</text></view>
+        <view class="item mod-flex-1" catchtap="onTapNavi" data-url="/pages/membercard/coupons?type=2">
+            <view class="icon mod-icon-cards"></view><text class="title">优惠券</text><text class="desc">{{count2}}张</text></view>
+        <view class="item mod-flex-1" catchtap="onTapNavi" data-url="/pages/membercard/coupons?type=3">
+            <view class="icon mod-icon-cards-redbag"></view><text class="title">红包</text><text class="desc">{{count3}}个</text></view>
+    </view>
+    <view class="mine-list mod-list">
+        <view class="item" catchtap="onTapNavi" data-url="/pages/order/index">
+            <view class="icon-box mod-icons-orders"></view>
+            <view class="title-box"><text class="title">电影票订单</text></view>
+        </view>
+        <!-- <view class="item" catchtap="onTapNavi" data-url="order-spell/order-spell">
+            <view class="icon-box mod-icons-orders"></view>
+            <view class="title-box"><text class="title">拼团订单</text></view>
+        </view>
+        <view class="item" catchtap="onTapNavi" data-url="order-robticket/order-robticket">
+            <view class="icon-box mod-icons-orders"></view>
+            <view class="title-box"><text class="title">抢票订单</text></view>
+        </view>
+        <view class="item" catchtap="onTapNavi" data-url="record/record">
+            <view class="icon-box mod-icons-record"></view>
+            <view class="title-box"><text class="title">赠票纪录</text></view>
+        </view> -->
+    </view>
+    <block wx:for="{{advertisementType4}}" wx:key="index">
+        <view class="mine-ad">
+            <image src="http://{{item.imagePath}}" />
+        </view>
+    </block>
+    <button wx:if="{{btnUser}}" class="login-box-button" open-type="getUserInfo" bindtap="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+</view>
+<view class="tip" bindtap="makePhoneCall">客服电话：4008-123-867</view>
+<include src="/footer.wxml" />

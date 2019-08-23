@@ -1,0 +1,109 @@
+.color-orange{color:#F90}.color-red{color:#EF4238}.font-size-small{font-size:18rpx}page{background:#fff}.buy{font-size:28rpx;line-height:1.5}.buy .images{position:relative}.buy .time-left{background:#FFCFB2;padding:0 30rpx 0 20rpx;text-align:right;font-size:20rpx;color:#ff6100;margin-right:-30rpx;border-radius:40rpx 0 0 40rpx;margin:10rpx -30rpx -10rpx 0}.buy .panel-content{line-height:110rpx}.buy .panel-footer{border:none}.buy .movie-name{font-size:35rpx}.buy .show-time{color:#F34D41}.list-view{border:none}.price-cells .list-view-item{padding:40rpx 30rpx}.price-cells .list-view-item:after{left:30rpx}.price-cells .list-view-item::after{left:0}.list-view-item{font-size:30rpx}.list-view-item .price{font-size:36rpx}.list-view-item .desc-info{font-size:26rpx;color:#999}.list-view-item .pull-left{font-size:32rpx}.list-view-item .discountCard-left,.list-view-item .pull-left{color:#666}.list-view-item .discountCard-left .desc,.list-view-item .pull-left .desc{display:inline-block;font-size:18rpx;margin-left:10rpx}.list-view-item .discountCard-left .desc.color-orange,.list-view-item .pull-left .desc.color-orange{vertical-align:middle;color:#F90;border:1px solid #F90;padding:1rpx 6rpx;border-radius:4rpx}.list-view-item .discountCard-right,.list-view-item .pull-right{color:#333}.list-view-item .discountCard-right .desc,.list-view-item .pull-right .desc{font-size:26rpx;color:#999;margin-right:12rpx}.list-view-item .discountCard-right switch,.list-view-item .pull-right switch{margin:-12rpx}.list-view-item .discountCard-right input,.list-view-item .pull-right input{position:relative;top:16rpx;margin-top:-24rpx}.panel-footer.margin-left{margin-left:30rpx;padding-left:0}.migrate .panel-title,.migrate-tips .panel-title{color:#666;margin-left:30rpx;padding:24rpx 30rpx 24rpx 0}.migrate .tips,.migrate-tips .tips{font-size:26rpx;color:#999;line-height:42rpx}.migrate .tips view,.migrate-tips .tips view{white-space:normal}.migrate .tips-expand-false,.migrate-tips .tips-expand-false{height:88rpx;overflow:hidden}.migrate .expandPanel,.migrate-tips .expandPanel{text-align:center}.migrate .expandPanel .icon,.migrate-tips .expandPanel .icon{width:33rpx;height:11rpx}.migrate .expandPanel .icon-expand-true,.migrate-tips .expandPanel .icon-expand-true{transform:rotate(180deg)}.mobile{border:none}.mobile .pull-left{color:#000;width:152rpx;font-size:32rpx}.mobile .pull-right{flex:1 1 auto}.mobile .mobile-key{margin-right:50rpx;flex:1}.mobile .panel-footer{line-height:1.5}.mobile .panel-content{padding:40rpx 30rpx}.mobile input{font-size:34rpx;flex-grow:1}.mobile .panel-footer{font-size:26rpx;color:#b2b2b2}.mobile .button-in-input{margin-top:-5rpx;margin-bottom:-5rpx}.mobile .mobile{float:right}.pay-container{position:fixed!important;bottom:0;box-sizing:border-box;width:100%;background:#fff;z-index:100}.pay-container .btn-pay{height:88rpx;border-radius:0}.pay-container .tips-money{margin:auto 0 auto auto;font-size:28rpx}.pay-container .tips-money .desc{color:#333}.pay-container .tips-money .money{color:#EF4238;font-size:40rpx}.pay-container .tips-container{font-size:24rpx;padding:22rpx 30rpx;line-height:1.5}.pay-container .tips-container .tip{color:#FFB400}.pay-container .tips-container .tip-icon{width:24rpx;height:24rpx;margin:auto 10rpx auto 0}.pay-container .tips-container .tip-disabled{color:#999}.activity-and-coupon,.merchant-coupon{background:#f5f5f5!important}.activity-and-coupon .panel,.merchant-coupon .panel{margin-bottom:0}.activity-and-coupon .modal-header,.merchant-coupon .modal-header{background:#f5f5f5;border-bottom:1px solid #d8d8d8;padding:20rpx 30rpx}.activity-and-coupon .modal-header .flex-col-5,.merchant-coupon .modal-header .flex-col-5{padding-right:25rpx}.activity-and-coupon .modal-header .flex-col-1,.merchant-coupon .modal-header .flex-col-1{width:120rpx}.activity-and-coupon .modal-header input,.merchant-coupon .modal-header input{padding-left:25rpx;border:1rpx solid #ccc;background:#fff;border-radius:10rpx;height:68rpx}.activity-and-coupon .modal-header .verifyBtn,.merchant-coupon .modal-header .verifyBtn{font-size:30rpx;color:#fc6120;border:1rpx solid #fc6120;line-height:68rpx;border-radius:10rpx;padding:0;text-align:center}.activity-and-coupon .modal-content,.merchant-coupon .modal-content{position:absolute;height:100%}.activity-and-coupon .modal-content-empty,.merchant-coupon .modal-content-empty{color:#999;font-size:26rpx;margin-top:45%;text-align:center}.activity-and-coupon .title-gray,.merchant-coupon .title-gray{color:#666;font-size:28rpx;margin-left:30rpx;margin-top:30rpx;margin-bottom:-14rpx}.activity-and-coupon .activity-item,.activity-and-coupon .coupon-item,.merchant-coupon .activity-item,.merchant-coupon .coupon-item{margin-top:30rpx;padding:0 30rpx;align-items:center}.activity-and-coupon .activity-item .flex-col-1,.activity-and-coupon .coupon-item .flex-col-1,.merchant-coupon .activity-item .flex-col-1,.merchant-coupon .coupon-item .flex-col-1{width:71rpx}.activity-and-coupon .activity-item .flex-col-5,.activity-and-coupon .coupon-item .flex-col-5,.merchant-coupon .activity-item .flex-col-5,.merchant-coupon .coupon-item .flex-col-5{border:1rpx solid #d8d8d8;border-radius:8rpx;background:#fff;padding:30rpx}.activity-and-coupon .activity-item .item-name,.activity-and-coupon .coupon-item .item-name,.merchant-coupon .activity-item .item-name,.merchant-coupon .coupon-item .item-name{font-size:35rpx}.activity-and-coupon .activity-item .item-desc,.activity-and-coupon .coupon-item .item-desc,.merchant-coupon .activity-item .item-desc,.merchant-coupon .coupon-item .item-desc{white-space:normal;margin-top:18rpx;font-size:28rpx;color:#666;line-height:1.4}.activity-and-coupon .activity-item .item-desc-red,.activity-and-coupon .coupon-item .item-desc-red,.merchant-coupon .activity-item .item-desc-red,.merchant-coupon .coupon-item .item-desc-red{margin-top:8.5rpx;color:#f34d41;font-size:24rpx}.activity-and-coupon .activity-item,.merchant-coupon .activity-item{min-height:200rpx}.activity-and-coupon .coupon-item,.merchant-coupon .coupon-item{min-height:250rpx}.activity-and-coupon .coupon-item:last-child,.merchant-coupon .coupon-item:last-child{margin-bottom:30rpx}.activity-and-coupon .coupon-item .flex-col-2,.merchant-coupon .coupon-item .flex-col-2{width:216rpx;border:1px solid #D8D8D8;border-right:none;border-radius:8px;border-top-right-radius:0;border-bottom-right-radius:0;align-self:stretch;color:#fff;text-align:center;background:#C9CACB url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAKCAYAAACT+/8OAAAALklEQVQImWNgIA/8//+f7f///xP+////DiYw4T8UwATewQSY0LXDBBbhNxQZAAAUgS0F5Uu9xgAAAABJRU5ErkJggg==) repeat-y top right;background-size:4rpx 10rpx}.activity-and-coupon .coupon-item .flex-col-3,.merchant-coupon .coupon-item .flex-col-3{border:1px solid #D8D8D8;border-left:none;border-radius:8px;border-top-left-radius:0;border-bottom-left-radius:0;background:#fff;align-self:stretch}.activity-and-coupon .coupon-item .item-price .font-size-largest,.merchant-coupon .coupon-item .item-price .font-size-largest{line-height:90rpx}.activity-and-coupon .coupon-item .item-price .font-size-big,.merchant-coupon .coupon-item .item-price .font-size-big{vertical-align:5px}.activity-and-coupon .coupon-item .item-price .item-type-desc,.merchant-coupon .coupon-item .item-price .item-type-desc{margin:0 auto;border-top:2rpx solid rgba(0,0,0,.08);padding-top:16rpx;width:62%;font-size:26rpx}.activity-and-coupon .coupon-item .font-size-largest,.merchant-coupon .coupon-item .font-size-largest{font-size:90rpx}.activity-and-coupon .coupon-item .font-size-large,.merchant-coupon .coupon-item .font-size-large{font-size:50rpx}.activity-and-coupon .coupon-item .font-size-big,.merchant-coupon .coupon-item .font-size-big{font-size:36rpx}.activity-and-coupon .coupon-item .item-desc,.activity-and-coupon .coupon-item .item-name,.merchant-coupon .coupon-item .item-desc,.merchant-coupon .coupon-item .item-name{margin:0 30rpx}.activity-and-coupon .coupon-item .item-name,.merchant-coupon .coupon-item .item-name{margin-top:30rpx;font-size:30rpx;color:#333}.activity-and-coupon .coupon-item .item-desc,.merchant-coupon .coupon-item .item-desc{margin-top:18rpx;font-size:24rpx;color:#999}.activity-and-coupon .coupon-item .item-footer,.merchant-coupon .coupon-item .item-footer{margin-top:12rpx;border-top:1px solid #e6e6e6;padding:0 30rpx;line-height:60rpx;font-size:22rpx;color:#f34d41}.activity-and-coupon .coupon-item .item-footer .item-footer-right,.merchant-coupon .coupon-item .item-footer .item-footer-right{float:right;color:#999}.activity-and-coupon .coupon-item .coupon-item-type-1,.merchant-coupon .coupon-item .coupon-item-type-1{background-color:#80A7DA}.activity-and-coupon .coupon-item .coupon-item-type-1.disabled,.merchant-coupon .coupon-item .coupon-item-type-1.disabled{background-color:#B4CEF1}.activity-and-coupon .coupon-item .coupon-item-type-2,.merchant-coupon .coupon-item .coupon-item-type-2{background-color:#fc6120}.activity-and-coupon .coupon-item .coupon-item-type-2.disabled,.merchant-coupon .coupon-item .coupon-item-type-2.disabled{background-color:#C9CACB}.activity-and-coupon .modal-footer,.merchant-coupon .modal-footer{margin-top:1rpx;border-top:1px solid #e5e5e5;padding:15rpx 30rpx;height:78rpx;background:#fff}.activity-and-coupon .modal-footer .flex-col-4,.merchant-coupon .modal-footer .flex-col-4{font-size:33rpx;line-height:78rpx}.activity-and-coupon .modal-footer .flex-col-2,.merchant-coupon .modal-footer .flex-col-2{width:220rpx}.activity-and-coupon .modal-footer button,.merchant-coupon .modal-footer button{width:100%;height:78rpx;line-height:78rpx}.flex,.flex-column,.flex-column-center{display:flex}.flex-column,.flex-column-center{flex-direction:column}.flex-column-center{justify-content:center}.flex-row-center{align-items:center}.flex-header{flex:0 0 auto}.flex-content{flex:1 1 auto;position:relative}.flex-footer{flex:0 0 auto}.flex-col-1,.flex-col-2{flex:0 0 auto;width:16.6666%}.flex-col-2{width:33.3333%}.flex-col-3,.flex-col-4,.flex-col-5,.flex-col-6{flex:1 1 auto;width:50%}.flex-col-4{width:66.6666%}.flex-col-5{width:83.3333%}.one-px-border-both,.one-px-border-bottom,.one-px-border-top{position:relative}.one-px-border-both:before,.one-px-border-top:before{content:" ";position:absolute;left:0;top:0;right:0;height:2rpx;border-top:2rpx solid #dcdcdc;color:#dcdcdc;-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scaleY(.5);transform:scaleY(.5)}.one-px-border-both:after,.one-px-border-bottom:after{content:" ";position:absolute;left:0;bottom:0;right:0;height:2rpx;border-bottom:2rpx solid #dcdcdc;color:#dcdcdc;-webkit-transform-origin:0 100%;transform-origin:0 100%;-webkit-transform:scaleY(.5);transform:scaleY(.5)}.membercard{position:relative;overflow:hidden;margin:30rpx;width:85%;height:350rpx;background:#327cc2;border-radius:20rpx;color:#fff;font-size:28rpx}.membercard:before{content:'';position:absolute;left:0;bottom:0;width:100%;height:82rpx;opacity:.06;background:#000}.membercard:after{content:"";display:block;position:absolute;width:316rpx;height:238rpx;right:-158rpx;top:-120rpx;opacity:.08;transform:rotate(36deg);background:#000}.membercard .type{position:absolute;top:20rpx;right:15rpx;z-index:1}.membercard image{margin:37rpx 25rpx 37rpx 37rpx;display:inline-block;background:#fff;width:62rpx;height:62rpx;border-radius:50%;vertical-align:middle}.membercard .desc{text-align:center;margin-top:2rpx;font-size:32rpx}.membercard .desc .bigger{font-size:42rpx;margin:0 10rpx}.membercard .sub-desc{text-align:center;font-size:26rpx;opacity:.69;margin-top:10rpx}.membercard .card-right,.membercard .price{position:absolute;font-size:26rpx}.membercard .card-right{bottom:24rpx;left:24rpx}.membercard .price{padding:12rpx 15rpx;right:29rpx;bottom:14rpx;background:rgba(0,0,0,.08);text-align:center;border-radius:100px}.membercard .price icon{vertical-align:bottom}.order-details-info .images{margin-left:80rpx;border-radius:6rpx;overflow:hidden}.order-details-info{padding:40rpx 30rpx}.order-details-info .desc-box{color:#999}.order-details-info .box-title .title{font-size:40rpx;font-weight:700}.order-details-info .box-desc{padding:10rpx 0}.order-details-info .box-desc .desc{font-size:30rpx}.mod-line-20{background:#F5F5F6}.buy-title{height:110rpx;padding:0 30rpx}.buy-title .box-title .title{font-size:32rpx}.buy-title .box-desc .desc{color:#AEAEAE;font-size:26rpx}.buy-title .box-desc .price{font-size:36rpx}.modal-content{box-sizing:border-box}.coupon-header{position:relative;line-height:88rpx;background:#fff;text-align:center}.coupon-header .title{font-size:30rpx;font-weight:700}.coupon-header .coupon-cancel{padding:0 30rpx;position:absolute;top:0;right:0;bottom:0;color:#B2B2B2}.coupon-add{padding:30rpx 30rpx 0}.coupon-add .add-btn{flex:1;height:88rpx;border-radius:100rpx}.coupon-add .coupon-add-input{height:80rpx;border-radius:6rpx;background:#F7F7F7;padding:0 30rpx;box-sizing:border-box}.coupon-add .coupon-add-btns{line-height:80rpx;padding:0 30rpx}
+.pay-container .btn-pay{
+    background: #00958e;
+    color: #fff;
+    line-height: 88rpx;
+    text-align: center;
+}
+.confirm-pay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(204, 204, 204, .8);
+    z-index: 999;
+}
+.cp-main {
+    background: #fff;
+    width: 80%;
+    margin: 200rpx auto;
+    text-align: center;
+    padding: 115rpx 0;
+    border-radius: 3px;
+}
+.cp-tip {
+    padding-bottom: 40rpx;
+}
+.cp-main navigator,.cp-main .btn-pay {
+    width: 220rpx;
+    padding: 20rpx;
+    font-size: 28rpx;
+    margin: 0 auto;
+    background: #00958e;
+    color: #fff;
+    border-radius: 3px;
+}
+.points-tip{
+    font-size: 26rpx;
+    margin-left: 10rpx;
+}
+.membercard-new {
+    background: #80A7DA;
+    border-radius: 6rpx;
+    padding: 20rpx;
+    position: relative;
+    margin-bottom: 30rpx;
+    overflow: hidden;
+}
+.membercard-section {
+    background: #fff;
+    padding: 30rpx;
+}
+.membercard-price {
+    text-align: center;
+    font-size: 56rpx;
+    padding: 22rpx 0 40rpx;
+    color: #000;
+}
+.membercard-info {
+    font-size: 24rpx;
+    text-align: center;
+}
+.membercard-aside {
+    padding-top: 20rpx;
+    font-size: 24rpx;
+    color: #fff;
+}
+.active{
+    border-bottom: 1px solid #dcdcdc;
+}
+.active-num text:first-child{
+    margin-right: 12rpx;
+    color: #999;
+}
+.active-num text.active-curr{
+    color: red;
+}
+.dialog,.dialog-mask{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 101;
+}
+.dialog-mask{
+    background: rgba(0, 0, 0, .7);
+}
+.dialog-content {
+    position: fixed;
+    z-index: 102;
+    background: #fff;
+    bottom: 0;
+    width: 100%;
+    height: 80%;
+    text-align: center;
+    padding-top: 40rpx;
+    box-sizing: border-box;
+}
+.dialog-content label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 40rpx;
+    border-bottom: 1px solid #f3f3f3;
+}
+.active-dlg-title {
+    margin-bottom: 20rpx;
+}

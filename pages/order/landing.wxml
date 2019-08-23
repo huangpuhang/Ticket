@@ -1,0 +1,24 @@
+<view class="coupon-container">
+    <view wx:if="{{ !hasRisk && coupon }}" class="success">
+        <view class="coupon flex type{{coupon.type}}">
+            <view class="coupon-desc">
+                <view class="money"><text>{{coupon.value}}</text>元</view>
+                <view class="expird">{{coupon.period}}</view>
+            </view>
+            <view class="coupon-type">{{coupon.type === 1 ? '代金券' : '通兑券'}}</view>
+        </view>
+        <view class="desc">{{desc}}</view>
+        <navigator url="/pages/movie/index" open-type="switchTab" class="buy-ticket-btn">立即购票</navigator>
+    </view>
+    <view wx:else class="error">
+        <view class="error-tips"><text>{{desc}}</text></view>
+    </view>
+</view>
+<view class="movies-container" wx:if="{{movies.length}}">
+    <view class="title">热映电影</view>
+    <view class="movies flex">
+        <navigator wx:for="{{movies}}" url="/pages/movie/movie?movieId={{ item.id }}" class="flex flex-column movie-item" open-type="redirect">
+            <image src="{{item.img}}" class="poster"></image><text class="text-ellipsis movie-nm">{{item.nm}}</text><text class="text-ellipsis movie-score">{{ item.globalReleased ? (item.sc ? item.score : '暂无评分') : (item.sc ? item.score : item.wish) }}</text><text class="pre-sale" wx:if="{{item.showst === 4}}">预售</text></navigator>
+    </view>
+</view>
+<include src="/footer.wxml" />

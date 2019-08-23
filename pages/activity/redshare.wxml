@@ -1,0 +1,86 @@
+<view class="page-redshare">
+  <view class="mod-header">
+    <image mod="aspectFill" src="/assets/images/red-banner-top.jpg" />
+    <view class="attention">
+      <text class="attention-desc">观影红包需关注星轶电影公众号才可使用</text>
+      <button class="attention-button" type="primary">去关注</button>
+    </view>
+  </view>
+  <view class="mod-centent">
+    <view class="red-form" style="display:no1ne">
+      <view class="mod-flexbox-c form-item">
+        <view class="mod-flex-1">
+          <input placeholder="输入手机号" />
+        </view>
+        <button type="text">获取验证码</button>
+      </view>
+      <view class="mod-flexbox-c form-item">
+        <input placeholder="输入验证码" />
+      </view>
+      <view class="form-button">
+        <button type="primary">拆红包</button>
+      </view>
+    </view>
+    <view class="red-result">
+      <view class="red-link">
+        <text class="desc">去我的红包查看 >></text>
+      </view>
+      <view class="red-title"></view>
+      <view class="red-result-list">
+        <view class="mod-card-items">
+          <view class="mod-flexbox-c card-item">
+            <view class="mod-img6666-radius images">
+              <image mod="aspectFill" src="http://p1.meituan.net/148.208/movie/3d17aa5ee07f5d66239d8393bcb8fe5196556.jpg" />
+            </view>
+            <view class="mod-flex-1">
+              <text class="title">138****1291</text>
+              <text class="desc">2018-12-23 12:23:45</text>
+            </view>
+            <text class="mod-units-money">66</text>
+          </view>
+          <view class="mod-flexbox-c card-item">
+            <view class="mod-img6666-radius images">
+              <image mod="aspectFill" src="http://p1.meituan.net/148.208/movie/3d17aa5ee07f5d66239d8393bcb8fe5196556.jpg" />
+            </view>
+            <view class="mod-flex-1">
+              <text class="title">138****1291</text>
+              <text class="desc">2018-12-23 12:23:45</text>
+            </view>
+            <text class="mod-units-money">66</text>
+          </view>
+          <view class="mod-flexbox-c card-item">
+            <view class="mod-img6666-radius images">
+              <image mod="aspectFill" src="http://p1.meituan.net/148.208/movie/3d17aa5ee07f5d66239d8393bcb8fe5196556.jpg" />
+            </view>
+            <view class="mod-flex-1">
+              <text class="title">138****1291</text>
+              <text class="desc">2018-12-23 12:23:45</text>
+            </view>
+            <text class="mod-units-money">66</text>
+          </view>
+          <view class="mod-flexbox-c card-item">
+            <view class="mod-img6666-radius images">
+              <image mod="aspectFill" src="http://p1.meituan.net/148.208/movie/3d17aa5ee07f5d66239d8393bcb8fe5196556.jpg" />
+            </view>
+            <view class="mod-flex-1">
+              <text class="title">138****1291</text>
+              <text class="desc">2018-12-23 12:23:45</text>
+            </view>
+            <text class="mod-units-money">66</text>
+          </view>
+          <view class="mod-flexbox-c card-item">
+            <view class="mod-img6666-radius images">
+              <image mod="aspectFill" src="http://p1.meituan.net/148.208/movie/3d17aa5ee07f5d66239d8393bcb8fe5196556.jpg" />
+            </view>
+            <view class="mod-flex-1">
+              <text class="title">138****1291</text>
+              <text class="desc">2018-12-23 12:23:45</text>
+            </view>
+            <text class="mod-units-money">66</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<include src="/footer.wxml" />

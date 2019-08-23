@@ -1,0 +1,152 @@
+<import src="../toast/toast.wxml" />
+<view wx:if="{{ section }}" class="seat-block" style="width:100%;">
+    <view class="info-block" style="width:100%;">
+        <view class="movie-info box-flex middle">
+            <view class="show-info">
+                <view class="title line-ellipsis">{{seatData.cinemaName}}</view>
+                <view class="info line-ellipsis">
+                    <view>{{seatData.showDateText}} {{seatData.showTime}}</view>
+                    <view style="margin-left: 5px;color: {{seatData.langWarn? '#EF4238': '#9b9b9b'}}">{{seatData.lang}}{{seatData.tp}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="seat-info">
+            <view class="seat-info-item" wx:for="{{ seatData.seatTypeList }}">
+                <image class="{{ item.name === '情侣座' ? 'double-width' : '' }}" src="{{ seatImgMap[item.name] }}"></image><text>{{ item.name }}</text></view>
+        </view>
+    </view>
+    <view class="main" style="height:{{content.displayHeight}}vh; line-height:{{content.displayHeight}}vh;" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend" bindtouchcancel="touchcancel">
+        <view class="container">
+            <block wx:if="{{seatData.hallName}}">
+                <view style="width:{{seatWidth * scaleInfo.scaleTo}}px;height:{{hallHeight}}px;position:relative;">
+                    <view style="height:{{hallHeight}}px;">
+                        <view class="h3" style="transform:translateX({{translateX * scaleInfo.scaleTo}}px);left:{{(middleLinePosition * scaleInfo.scaleTo - 163 / 2)}}px;">{{seatData.hallName}}</view>
+                    </view>
+                </view>
+            </block>
+            <block wx:if="{{section[0].seats}}">
+                <view class="side" style="position:{{rowNumberPosition}}; left: 0; margin-top:0;transform: scaleY({{scaleInfo.scaleTo}}) translateY({{translateY}}px);">
+                    <view class="ol" style="">
+                        <view class="cs"></view>
+                        <block wx:for="{{section[0].seats}}" wx:for-index="index" wx:for-item="rows">
+                            <block wx:if="{{rows.rowId != ''}}">
+                                <view class="number" style="transform:scaleY({{1/scaleInfo.scaleTo}});display:flex;flex:1;align-items:center;justify-content:center;height:35px;padding:5px 0;">{{rows.rowId}}</view>
+                            </block>
+                            <block wx:else>
+                                <view class="number" style="transform:scaleY({{1/scaleInfo.scaleTo}});display:flex;flex:1;align-items:center;justify-content:center;height:35px;padding:5px 0;"></view>
+                            </block>
+                        </block>
+                        <view class="cs"></view>
+                    </view>
+                </view>
+            </block>
+            <view class="item" data-sectionid="1" data-sectionname="{{section[0].sectionName}}" data-scaleto="{{scaleInfo.scaleTo}}" style="transform: scale({{scaleFrom ? scaleFrom : scaleInfo.scaleTo}}) translate({{translateX}}px,{{translateY}}px); transition:{{druation}}s;">
+                <view style="height:16px;">
+                    <view class="c-tips" style="transform:scale({{1/scaleInfo.scaleTo}});left:{{(middleLinePosition - 25)}}px;"></view>
+                    <view class="c-tips_line" style="width:2px;height:100%;top:16px;margin-top:-8px;left:{{middleLinePosition}}px;"></view>
+                </view>
+                <block wx:for="{{section[0].seats}}" wx:for-index="i" wx:for-item="rows">
+                    <view class="p">
+                        <block wx:for="{{rows.columns}}" wx:for-index="j" wx:for-item="seat">
+                            <view wx:if="{{seat.st == 'N'}}">
+                                <block wx:if="{{seat.selected}}">
+                                    <view catchtap="handleSelect" class="seat checked" data-checked="{{seat.selected}}" data-no="{{seat.seatNo}}" data-type="{{seat.st}}" data-row="{{rows.rowNum}}" data-column="{{seat.columnId}}"></view>
+                                </block>
+                                <block wx:else>
+                                    <view catchtap="handleSelect" class="seat active" data-no="{{seat.seatNo}}" data-type="{{seat.st}}" data-row="{{rows.rowNum}}" data-column="{{seat.columId}}"></view>
+                                </block>
+                            </view>
+                            <view wx:elif="{{seat.st == 'LK'}}">
+                                <view class="seat disabled" data-no="{{seat.seatNo}}" data-type="{{seat.st}}" data-row="{{rows.rowNum}}" data-column="{{seat.columId}}"></view>
+                            </view>
+                            <view wx:elif="{{seat.st == 'E'}}">
+                                <view class="seat" data-no="{{seat.seatNo}}" data-type="{{seat.st}}" data-row="{{rows.rowNum}}" data-column="{{seat.columId}}"></view>
+                            </view>
+                            <view wx:elif="{{seat.st == 'L' || seat.st == 'R'}}">
+                                <view catchtap="handleSelect" class="seat lover {{seat.st == 'L' ? 'lover-left' : 'lover-right'}} {{seat.selected ? 'lover-selected' : ''}}" data-no="{{seat.seatNo}}" data-type="{{seat.st}}" data-row="{{rows.rowNum}}" data-column="{{seat.columnId}}"></view>
+                            </view>
+                            <view wx:else>
+                                <view class="seat"></view>
+                            </view>
+                        </block>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="buy-block" style="height:{{footer.displayHeight}}vh;">
+        <view class="buy-seatinfo-wrapper" style="height:{{(footer.displayHeight - 9)}}vh;">
+            <block wx:if="{{recommendSeats.length > 0 && isShowRecommend}}">
+                <view class="selected-text">推荐座位</view>
+                <view class="recommend-info">
+                    <block wx:for="{{recommendSeats}}" wx:for-item="recommendItem">
+                        <view class="recommend-item {{ recommendItem.count ? '' : 'recommend-item-disabled' }}" style="background-color:{{cancelColor}};" catchtap="handleRecommend" data-remind="{{recommendItem.seatDesc.remind}}" data-seats="{{recommendItem.seats}}"><text>{{recommendItem.count}}人</text></view>
+                    </block>
+                </view>
+            </block>
+            <block wx:if="{{selectedData.length > 0 && !isShowRecommend}}">
+                <view class="selected-text">已选座位</view>
+                <view class="selected-info">
+                    <block wx:if="{{selectedData.length > 0}}">
+                        <block wx:for="{{selectedData}}" wx:for-item="selectedItem" wx:for-index="idx">
+                            <view class="selected-seats {{idx == 3 ? 'selected-seats-last' : ''}}" style="background-color:{{cancelColor}};" catchtap="handleCancelSeat" data-no="{{selectedItem.seatNo}}">
+                                <view class="selected-seats-main">
+                                    <view>{{selectedItem.rowId}}排{{selectedItem.columnId}}座</view>
+                                    <block wx:if="{{false}}">
+                                        <view class="selected-seats-num">￥{{selectedItem.currentPrice}}</view>
+                                    </block>
+                                    <block wx:else>
+                                        <view class="selected-seats-num">￥{{seatData.unitPrice}}</view>
+                                    </block>
+                                </view>
+                                <view class="cancel-selected"></view>
+                            </view>
+                        </block>
+                    </block>
+                </view>
+            </block>
+        </view>
+        <view class="submit-block">
+            <block wx:if="{{selectedData.length > 0 && selectedData.length <= seatData.buyNumLimit}}">
+                <view class="can-submit no-presale">
+                    <view class="phone-info clearfix" bindtap="editTel">
+                        <view class="set-phone"><text>{{tel == '' ? '请填写你的购票手机号' : '接收短信手机号:'+tel}}</text>
+                            <icon class="iconfont icon-edit"></icon>
+                        </view>
+                    </view>
+                    <form class="form" bindsubmit="formSubmit" report-submit="true"><button formType="submit" data-seats="{{checkedSeats}}" data-seqNo="{{seatData.seqNo}}" data-sectionid="{{section[0].sectionId}}" data-sectionname="{{section[0].sectionName}}" class="submit flex" bindtap="onSubmitOrder">确认选座</button></form>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="cannot-submit no-presale">
+                    <view class="phone-info clearfix" bindtap="editTel">
+                        <view class="set-phone"><text>{{tel == '' ? '请填写你的购票手机号' : tel}}</text>
+                            <icon class="iconfont icon-edit"></icon>
+                        </view>
+                    </view><button class="submit flex">请先选座</button></view>
+            </block>
+        </view>
+    </view>
+</view>
+<view wx:if="{{telDialog.isShowTelDialog}}" class="pop-wrapper">
+    <view class="mask" bindtap="closeTelDialog"></view>
+    <view class="pop-btn-box pop-input">
+        <view class="mod-bd"><input wx:if="{{telDialog.isInput}}" bindinput="bind_input" maxlength="11" type="number" focus="{{telDialog.isFocus}}" name="inputValue" value="{{tel}}" placeholder="填写手机号" class="tel" />
+            <view wx:if="{{telDialog.isTelDialogErr}}" class="infoTip">手机号格式不正确，请重新输入</view>
+        </view>
+        <view class="btns fixed">
+            <view class="cancel" bindtap="closeTelDialog">取消</view>
+            <view class="confirm" bindtap="seavPhone">确认</view>
+        </view>
+    </view>
+</view>
+<!-- <loading hidden="{{pageToastData.loading_hidden}}" bindchange="loadingChange">获取座位图...</loading> -->
+<loading hidden="{{pageToastData.submitOrder_hidden}}" bindchange="loadingChange">正在为您订座</loading><template is="toast_seats_limit_alert" data="{{...pageToastData}}" /><template is="toast_seats_select_alert" data="{{...pageToastData}}" /><template is="toast_seats_select_alert2" data="{{...pageToastData}}" />
+<block wx:if="{{!!seatData.desc}}">
+    <modal confirm-text="知道了" no-cancel hidden="{{pageToastData.otherday_confirm_hidden}}" bindconfirm="confirmDesc">
+        <view style="text-align: center;"><text style="font-size: 34rpx;color:#000;">{{seatData.desc}}</text></view>
+    </modal>
+</block>
+<modal title="预定失败" confirm-text="知道了" no-cancel hidden="{{pageToastData.submitOrder_fail_hidden}}" bindconfirm="confirmDesc">{{orderErrorMsg || '抱歉，您的座位已被其他用户选中，请重新选择'}}</modal>
+<modal confirm-text="继续选座" cancel-text="返回" no-cancel hidden="{{pageToastData.goback_slectseats_hidden}}" bindconfirm="confirmDesc">返回后，您当前选中的座位将不再保留</modal>
+<include src="/footer.wxml" />

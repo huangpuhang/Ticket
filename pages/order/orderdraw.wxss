@@ -1,0 +1,159 @@
+button.share {
+    width: 200rpx;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 25px;
+    background: #fff;
+    border: 1px solid #00958e;
+    color: #00958e;
+    margin-top: 30rpx;
+    font-size: 26rpx;
+}
+.dialog {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(88, 96, 86, .9);
+    z-index: 99;
+    padding-top: 50rpx;
+}
+.dialog_img, .dialog_btns, .dialog_tip {
+    width: 600rpx;
+    margin: 0 auto;
+}
+.dialog_img {
+    height: 850rpx;
+    overflow: hidden;
+}
+.dialog_img canvas {
+    width: 100%;
+    height: 100%;
+}
+.dialog_btns {
+    display: flex;
+    justify-content: space-between;
+}
+.dialog_btns button {
+    margin: 0;
+    padding: 0;
+    border-radius: 25px;
+    background: #00958e;
+    /* border: 1px solid #00958e; */
+    color: #fff;
+    margin-top: 30rpx;
+    font-size: 26rpx;
+    flex: 1;
+}
+.dialog_btns button::after, .dialog_btns button::before {
+    border: none;
+}
+.dialog_btns button:first-child {
+    margin-right: 20rpx;
+}
+.dialog_tip {
+    color: #f2f2f2;
+    line-height: 1.5;
+    text-align: center;
+    padding: 30rpx 0;
+}
+.btn-nav {
+    text-align: center;
+    padding: 40rpx 0;
+    color: #00958e;
+    margin-top: 80rpx;
+}
+.page-end {
+    text-align: center;
+    padding: 50rpx 0 0;
+  }
+  
+  .page-end icon, .page-end text {
+    display: block;
+  }
+  
+  .page-end text {
+    padding: 10rpx 0;
+  }
+  
+  .page-end .en {
+    font-size: 48rpx;
+    color: #999;
+  }
+  
+  .page-end .cn {
+    font-size:34rpx;
+    color:#00968e;
+    margin:20rpx 0;
+  }
+  
+  .error .cn {
+    color: red;
+  }
+  
+  .page-info {
+    margin: 20rpx 30rpx;
+  }
+  
+  .page-info .infobg {
+    background: #ffffff;
+    padding: 50rpx 50rpx;
+  }
+  
+  .page-info .title, .page-info .address, .page-info .info, .page-info .seatbox {
+    display: block;
+    line-height: 1.6;
+  }
+  
+  .page-info .title {
+    font-size: 32rpx;
+  }
+  
+  .page-info .seatbox text {
+    padding: 0 40rpx 0 0;
+  }
+  
+  .page-info button {
+    margin: auto;
+    text-align: center;
+    display: block;
+    padding: 30rpx 0 0;
+    font-size: 30rpx;
+  }
+  
+  .page-footer {
+    padding: 30rpx 0 50rpx;
+  }
+  
+  .page-footer text {
+    display: block;
+    text-align: center;
+    line-height: 2;
+  }
+  
+  .page-footer .tel {
+    color: #00968e;
+  }
+  
+  .ticket-loading{
+    text-align:center;
+    padding:100rpx 0;
+  }
+  .ticket-loading icon,
+  .ticket-loading text{
+    display:inline-block;
+    vertical-align: middle;
+  }
+  .ticket-loading text{
+    padding:0 30rpx;
+    font-size:34rpx;
+  }
+  
+  .page-end .order_fail{
+      color: red;
+  }
+  .page-end .order_tip{
+      font-size:30rpx;
+      color:red;
+  }

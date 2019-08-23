@@ -1,0 +1,78 @@
+<view class="page-redshare">
+  <view class="mod-header">
+    <image mod="aspectFill" src="/assets/images/red-banner-top.jpg" />
+    <view class="attention">
+      <text class="attention-desc mod-fc-primary">水煮肉片已获得20元现金</text>
+      <button class="attention-button" type="primary">邀请好友看电影，赚红包</button>
+    </view>
+  </view>
+  <view class="mod-centent">
+    <view class="red-form">
+      <view class="mod-flexbox-c form-item">
+        <view class="mod-flex-1">
+          <input placeholder="输入手机号" />
+        </view>
+        <button type="text">获取验证码</button>
+      </view>
+      <view class="mod-flexbox-c form-item">
+        <input placeholder="输入验证码" />
+      </view>
+      <view class="form-button">
+        <button type="primary">拆红包</button>
+      </view>
+    </view>
+    <view class="red-result">
+      <view class="red-title-look" hidden>
+        <image src="/assets/images/icon-red-title-look.png" />
+      </view>
+      <view class="red-result-list red-info" hidden>
+        <view class="info-mid">
+          <view class="items">
+            <text class="title mod-fc-primary">10<text class="small">元</text></text>
+            <text class="desc">红包在路上</text>
+          </view>
+          <view class="mod-flexbox-c mod-icon-dots">
+            <view class="dots-item"></view>
+            <view class="dots-item"></view>
+            <view class="dots-item"></view>
+          </view>
+          <view class="items">
+            <text class="title mod-fc-primary">20<text class="small">元</text></text>
+            <text class="desc">累计获得</text>
+          </view>
+          <view class="mod-flexbox-c mod-icon-dots">
+            <view class="dots-item"></view>
+            <view class="dots-item"></view>
+            <view class="dots-item"></view>
+          </view>
+          <view class="items">
+            <text class="title mod-fc-primary">2<text class="small">人</text></text>
+            <text class="desc">成功邀请</text>
+          </view>
+        </view>
+      </view>
+      <image src="/assets/images/red-title.png" style="width: 244rpx;height: 41rpx;display: block;margin: 0 auto 20rpx;" />
+      <view class="red-result-list red-result-info">
+        <view class="desc">
+          <text class="num">1、</text>邀请好友成为星轶电影新用户，好友领取您送出的红包，并在7天内通过星轶小程序在线支付订单且无退款，无论是否使用红包，您均可获得红包奖励；</view>
+        <view class="desc">
+          <text class="num">2、</text>奖励红包会在邀请成功后的48小时内发放入您的账户，您可以星轶小程序-我的-红包中查看;</view>
+        <view class="desc">
+          <text class="num">3、</text>您邀请的好友必须是星轶电影新用户，同一微信号，同一手机号，同一设备，同一支付账号视为同一用户;</view>
+        <view class="desc">
+          <text class="num">4、</text>您邀请的好友须通过星轶小程序下单，或星轶电影相关小程序;</view>
+        <view class="desc">
+          <text class="num">5、</text>如有其他疑问请咨询星轶电影客服。</view>
+      </view>
+    </view>
+  </view>
+  <Button class="mod-fc-primary red-button" type="text">优惠购票</Button>
+</view>
+<view class="mod-flexbox-hv-c mod-flexbox-v modal-red-share" hidden>
+  <view class="share-mid">
+    <image src="/assets/images/share_red.png" />
+    <view class="share-code"></view>
+  </view>
+  <Button class="mod-fc-primary" type="text">保存图片</Button>
+</view>
+<include src="/footer.wxml" />

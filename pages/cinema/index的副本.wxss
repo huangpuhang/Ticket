@@ -1,0 +1,1 @@
+@import "_cinema-item.wxss";@import "../search/_search-bar.wxss";page{line-height:1}page .cinema-list{background:#fff}.city-error-page.middle-center-page{position:static;z-index:0;margin-top:200rpx}

@@ -1,0 +1,1 @@
+<template name="listItem"><view class="infoItem listItem one-px-border-top"><text class="text">{{info}}</text><text class="text-right color-red">{{text}}</text></view></template>

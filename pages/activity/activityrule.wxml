@@ -1,0 +1,48 @@
+<view class="mod-activityrule">
+  <view class="mod-title">
+    <text class="title">活动时间</text>
+    <image src="/assets/images/icon-title.png" />
+  </view>
+  <view class="rule-text">
+    <text class="mod-desc">分享者领取海报后，海报内用户二维码以及群红包激活。海报二维码有效期7天，分享者须在7天内完成活动纷享。领取有效期内，分享者获得的奖励红包和被邀请者获得的观影红包，奖励红包有效期为15天，观影红包有效期为7天。</text>
+  </view>
+  <view class="mod-title">
+    <text class="title">活动规则</text>
+    <image src="/assets/images/icon-title.png" />
+  </view>
+  <view class="rule-text">
+    <text class="mod-desc">每部电影仅设定10000张电影海报，限前1000名用户领取，每部电影海报总价值1000万元。</text>
+    <text class="mod-desc">活动分享期间，分享者进入活动页面，领取并编辑附带用户二维码的纷享海报，并通过朋友圈/群和微信好友分享电影海报。参与者扫码先登录星轶电影小程序，完成注册授权后可随机领取海报电影观影红包，每名参与者只能扫码领取一次；每张最多可领取250人次，参与者最高可获得88元观影红包。</text>
+    <text class="mod-desc">参与者领取观影红包后，可通过红包链接指引购买海报电影票，购票前须先关注公众号。参与者完成全部在线选座和订单支付即视为完成活动。</text>
+    <text class="mod-desc">完成活动的参与者，根据电影海报宣传电影的类型，2D电影满20人、3D电影满25人、IMAX电影满30人即视为分享者任务达标，达标的分享者可分别获得平台提供的60元面值2D电影专票券、75元面值3D电影专票券和90元面值IMAX电影专票券。</text>
+    <text class="mod-desc">活动期间，同一用户可多次分享，也可以请其他好友转发，扫码用户均视为分享者活动好友。</text>
+    <text class="mod-desc">活动期间，同一用户被成功领取一次观影红包后，不能领取其他分享者分享的同一电影海报观影红包。</text>
+    <text class="mod-desc">同一用户：使用同一微信号、同一手机号和同一终端等，视为同一用户。</text>
+  </view>
+  <view class="mod-title">
+    <text class="title">使用规则</text>
+    <image src="/assets/images/icon-title.png" />
+  </view>
+  <view class="rule-text">
+    <text class="mod-desc">本活动专票券和观影红包均为星轶电影小程序的电影票代金券，仅用于星轶电影平台上的购票选座。</text>
+    <text class="mod-desc">本活动专票券和观影红包仅用于活动海报电影的购票，不可用于其他电影的购票。</text>
+    <text class="mod-desc">本活动专票券和观影红包不限影院场次，可在星轶电影平台上提供在线选座的所有电影院、所有场次电影票兑换或购票。</text>
+    <text class="mod-desc">本活动专票券和观影红包每次订单只能使用一张，订单超过票面金额的须使用现金或影卡支付。</text>
+    <text class="mod-desc">本活动专票券和观影红包有效期为30天，超过有效期后将自动失效。</text>
+    <text class="mod-desc">本活动专票券和观影红包不可申请提现，超过订单差额的部分不退款。</text>
+    <text class="mod-desc">观影红包不可与其它优惠活动叠加使用；使用时如有平台特惠活动，请用户先点击不适用特惠，再选择使用红包支付即可。</text>
+    <text class="mod-desc">本活动专票券和观影红包可通过星轶电影小程序个人账户进行查看和使用。</text>
+  </view>
+  <view class="mod-title">
+    <text class="title">其他说明</text>
+    <image src="/assets/images/icon-title.png" />
+  </view>
+  <view class="rule-text">
+    <text class="mod-desc">本活动专票券和观影红包均为星轶电影小程序的电影票代金券，仅用于星轶电影平台上本活动涉及的优惠券和红包，由星轶电影出资提供，用户无需承担任何费用。红包的个税由星轶电影运营主体代为扣缴。</text>
+    <text class="mod-desc">所有微信登录一起看电影小程序的用户均可以参与分享活动，但领取红包须完成用户微信登录小程序授权，在线选座须绑定手机号。如因用户拒绝微信登录小程序授权导致用户领取红包失败、或用户拒绝绑定手机号导致用户购票失败，视为用户自动放弃活动资格。</text>
+    <text class="mod-desc">如用户存在或涉嫌违规情况，包括但不限于刷单、作弊、虚假交易、其它风险交易等，星轶电影将撤销其活动参与资格，并有权冻结其已经获得的优惠券或红包。</text>
+    <text class="mod-desc">星轶电影有权在法律许可范围内对活动规则进行解释及作出适当调整。</text>
+    <text class="mod-desc">星轶电影客服热线：4008200510</text>
+  </view>
+</view>
+<include src="/footer.wxml" />

@@ -1,0 +1,70 @@
+.intro-movie {
+    display: flex;
+    padding: 40rpx;
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    min-width: 0;
+}
+.intro-mask {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: blur(20rpx);
+    z-index: 2;
+    opacity: .8;
+}
+.intro-img {
+    margin-right: 30rpx;
+    position: relative;
+    z-index: 3;
+}
+.intro-img image {
+    width: 200rpx;
+    height: 280rpx;
+}
+.intro-movie-cnt {
+    flex: 1;
+    line-height: 2;
+    position: relative;
+    z-index: 3;
+    min-width: 0;
+}
+.intro-title {
+    font-size: 36rpx;
+    margin-bottom: 30rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.intro-p, .intro-p view {
+    font-size: 28rpx;
+}
+.intro-p {
+    display: flex;
+}
+.intro-version text {
+    background: #00958e;
+    padding: 4rpx 10rpx;
+    font-size: 22rpx;
+    margin-left: 10rpx;
+    border-radius: 2px;
+}
+.intro-intro {
+    padding: 40rpx;
+    line-height: 1.8;
+}
+.intro-btn {
+    position: fixed;
+    background: #00958e;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 36rpx;
+    color: #fff;
+    padding: 35rpx 0;
+}

@@ -1,0 +1,15 @@
+<template name="membercard">
+    <view class="movie-card unbind {{status == 1 ? '': status == 2 ? 'used-card' : 'disable-card'}}" data-id="{{ eMemberCardId || ememberCardId }}">
+        <view class="section">
+            <view class="tips"></view>
+            <view class="hot"><text class="number">{{ amount/100 }}</text><text class="desc">元</text></view>
+            <view class="mod-flexbox-hv-c btns"><view class="box-btn"></view></view>
+            <text class="info">有效期：{{validDays}}天（{{startTime}} 至 {{endTime}}）</text>
+        </view>
+        <view class="aisde mod-flexbox">
+            <view class="mod-flex-1">
+                <text class="desc">卡号：{{number}}</text>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,29 @@
+<template name="coupon">
+  <view class="coupon-item">
+    <view class="flex-col-1 flex-column-center {{ isExpird || isUsed ? 'expird' : '' }}">
+      <view class="item-price">
+        <view wx:if="{{ type === 1 }}">
+          <text class="font-size-largest">{{ value }}</text>
+          <text class="font-size-big">元</text>
+        </view>
+        <view wx:elif="{{ type === 2 }}">
+          <text class="font-size-large">{{ subType }}</text>
+        </view>
+        <view class="item-type-desc">{{ type === 2 ? '兑换券' : '红包' }}</view>
+      </view>
+    </view>
+    <view class="flex-col-2 flex-column">
+      <view class="item-name">{{ title }}</view>
+      <view class="flex-content item-desc">{{ limitDesc }}</view>
+      <view wx:if="{{ leftDesc.length }}" class="item-footer flex-footer">
+        <view class="item-footer-right">{{ leftDesc }}</view>
+      </view>
+      <view class="business-tag {{ isExpird ? 'expird' : '' }}">
+        <text>星轶</text>
+      </view>
+      <view wx:if="{{ isExpird }}" class="tag-expird">
+        <image src="http://p0.meituan.net/mmdb/5e75946c16c9b54409c33b9fa2430e197321.png" />
+      </view>
+    </view>
+  </view>
+</template>

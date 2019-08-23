@@ -1,0 +1,50 @@
+<template name="movie">
+  <navigator catchtap="onTapNavi" data-url="/pages/cinema/movie?movieId={{ movieno }}" class="movie clearfix">
+    <image class="movie-cover pull-left" mode="aspectFill" src="{{ moviePosterMini }}"></image>
+    <view class="movie-content flex flex-column">
+      <view class="flex">
+        <view class="text-ellipsis flex flex-middle flex-item">
+          <text class="movie-name text-ellipsis">{{name}}</text>
+          <text class="movie-version version {{version}}"></text>
+          <text wx:if="{{ preShow }}" class="movie-tag movie-tag-preshow"></text>
+        </view>
+      </view>
+      <view class="flex">
+        <view class="flex flex-item flex-column movie-desc">
+          <text class="movie-category text-ellipsis">{{tags}}</text>
+          <text wx:if="{{actor}}" class="movie-celebrity text-ellipsis">主演: {{actor}}</text>
+          <text wx:if="{{activeTab === 'coming'}}" class="movie-show text-ellipsis">上映时间: {{date}}</text>
+          <view class="movie-comment text-ellipsis" wx:if="{{ comment }}">
+            <view class="comment-score flex-middle">
+              <text class="my-score" wx:if="{{ comment.id }}">我评:</text>
+              <view class="stars">
+                <image class="star" wx:for="{{ comment.starArray }}" src="/images/star-{{item}}.png" />
+              </view>
+              <text class="my-score" wx:if="{{ comment.id }}">{{ comment.score * 2 }}分</text>
+            </view>
+            <text class="comment-content text-ellipsis">{{ comment.content }}</text>
+          </view>
+        </view>
+        <view class="movie-button">
+          <view class="movie-button-num" wx:if="{{lowestPrice}}">
+            <view>
+              <text>{{lowestPrice/100}}</text>
+              <text>元</text>
+            </view>
+            <text>起</text>
+          </view>
+          <navigator wx:if="{{ !comment.id }}" class="btn btn-comment" catchtap="onTapNavi" data-url="/pages/movie/review?movieId={{id}}">评分</navigator>
+          <view wx:if="{{showst == 1}}" data-wishst="{{wishst}}" data-movieid="{{id}}" data-index="{{index}}" data-subindex="{{subIndex}}" class="btn btn-wish" catchtap="toggleWishFromComing">
+            <block wx:if="{{ wishst == 1 }}">
+              <image src="/images/heart-full.png"></image>已想看</block>
+            <block wx:else>
+              <image src="/images/heart-border.png"></image>想看</block>
+          </view>
+          <navigator wx:if="{{activeTab === 'hot'}}" class="btn btn-buy" catchtap="onTapNavi" data-url="/pages/cinema/movie?movieId={{ movieno }}">购票</navigator>
+          <navigator wx:if="{{activeTab === 'coming'}}" class="btn btn-buy btn-presale" catchtap="onTapNavi" data-url="/pages/cinema/movie?movieId={{ movieno }}">预售</navigator>
+        </view>
+      </view>
+      <view class="movie-tips" wx:if="{{offerInfo}}">{{offerInfo}}</view>
+    </view>
+  </navigator>
+</template>

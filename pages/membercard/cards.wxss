@@ -1,0 +1,1 @@
+@import "_card.wxss";page{background:#fff}.open-cards-container{text-align:center;margin-top:1em}.open-cards-btn{color:#fc6120;border:1px solid #fc6120;border-radius:8rpx;text-align:center;padding:20rpx 30rpx;margin:30rpx;font-size:36rpx}.error-page .profile-empty{width:175rpx;height:200rpx;margin-right:20rpx}.empty{margin-top:0}

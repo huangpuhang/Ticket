@@ -1,0 +1,25 @@
+@import "_coupon.wxss";page{background:#fff}.error-page image{width:128rpx;height:112rpx;margin-right:20rpx}.button-hover{background-color:red}.btn-add{position:absolute;width:92%;top:20rpx;background:0 0!important;color:#fc6120!important;border-color:#fc6120!important;margin-bottom:50rpx}.btn-add1{width:92%;top:20rpx;background:0 0!important;color:#fc6120!important;border-color:#fc6120!important;margin-bottom:50rpx}
+.tips{
+    font-size: 22rpx;
+    color: #999;
+    padding: 10rpx 0;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.red-item-img {
+    position: absolute;
+    top: 26rpx;
+    right: 14rpx;
+    width: 150rpx;
+}
+.red-items .price{
+    border-radius: 6rpx 0 0 6rpx;
+}
+.red-over{
+    
+}
+.red-over .over {
+    background: #ccc;
+}

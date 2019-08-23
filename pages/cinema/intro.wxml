@@ -1,0 +1,23 @@
+<view class="intro-movie">
+    <view class="intro-mask" style="background:#666 url({{movie.moviePoster}}) no-repeat 0 0; background-size:cover;"></view>
+    <view class="intro-img">
+        <image src="{{movie.moviePoster}}" mode="aspectFill"></image>
+    </view>
+    <view class="intro-movie-cnt">
+        <view class="intro-title">{{movie.name}}</view>
+        <view class="intro-p">
+            <view>{{movie.tags}}</view>
+            <view class="intro-version">
+                <text wx:for="{{movie.version}}" wx:key="{{index}}">{{item}}</text>
+            </view>
+        </view>
+        <view class="intro-p">
+            {{movie.nation}}
+            <block wx:if="{{movie.nation}}">/</block>
+            {{movie.longs}}
+        </view>
+        <view class="intro-p">{{movie.date}} 大陆上映</view>
+    </view>
+</view>
+<view class="intro-intro">{{movie.shortComment ? movie.shortComment : '暂无相关介绍'}}</view>
+<view class="intro-btn" bindtap="tapNavToCinemas">特惠购票</view>

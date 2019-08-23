@@ -1,0 +1,113 @@
+<import src="/pages/search/_search-bar.wxml" />
+<view wx:if="{{cinemas.length > 0}}" class="flexbox-column-c movieinfo" bindtap="tapMovieDetail">
+    <view class="maskimage" style="background:#666 url({{movie.moviePosterMini}}) no-repeat 0 0; background-size:cover;" />
+    <view class="img200280 mmovie-item">
+        <image src="{{movie.moviePosterMini}}" mode="aspectFill" />
+    </view>
+    <view class="flex-1 mmovie-item">
+        <view class="title"><text class="name">{{movie.name}}</text><text class="enname">{{movie.enName}}</text></view>
+        <view class="desc"><text class="type">{{movie.tags}} {{movie.version}}</text><text class="type">导演:{{movie.director}}</text><text class="type">主演:{{movie.actor}}</text><text class="info">{{movie.longs}}</text><text class="times">{{movie.date}}上映</text></view>
+    </view>
+    <image src="../../images/arrow.png" class="cinema-arrow" mode="widthFix"></image>
+</view>
+<view class="{{isSort ? 'fixedbox' : ''}}">
+    <scroll-view wx:if="{{dates.length}}" class="tab-container one-px-border-both" scroll-x="true" scroll-left="{{ dateScrollLeft }}">
+        <view class="date-list tab-list">
+            <block wx:for="{{dates}}" wx:key="index">
+                <view class="tab-item {{item.day === day ? 'current': ''}}" bindtap="dayChangeHandler" data-date="{{item.day}}"><text>{{item.text}}</text><text class="tag" wx:if="{{item.isPredate}}">点映</text></view>
+            </block>
+        </view>
+    </scroll-view>
+    <view wx:if="{{cinemas.length > 0}}" class="mod-flexbox-c one-px-border-both quick-select">
+        <view class="mod-flex-1 item mod-flexbox-c" hidden>
+            <view class="mod-flex-1"><text class="title arr">全城</text></view>
+            <view class="down-arrow-icon"></view>
+        </view>
+        <view class="mod-flex-1 item mod-flexbox-c" bindtap="showSort">
+            <view class="mod-flex-1"><text class="title">{{sortText}}</text></view>
+            <view class="down-arrow-icon"></view>
+        </view>
+        <view class="mod-icon-search" catchtap="onTapNavi" data-url="/pages/search/index?movieId={{movie.movieno}}&type=2"></view>
+    </view>
+    <view wx:if="{{isSort}}" class="fixed-search" bindtap="tapSort" data-mask="1">
+        <view class="search-end">
+            <scroll-view scroll-y style="height: 100%">
+                <view class="mod-flexbox-c item" bindtap="tapSort" data-name="按距离排序" data-sorttype="0">
+                    <icon class="{{sortType == 0 ? '' : 'noticon'}}" type="success_no_circle" size="16" /><text class="title">按距离排序</text></view>
+                <view class="mod-flexbox-c item" bindtap="tapSort" data-name="按价格排序" data-sorttype="1">
+                    <icon class="{{sortType == 1 ? '' : 'noticon'}}" type="success_no_circle" size="16" /><text class="title">按价格排序</text></view>
+            </scroll-view>
+        </view>
+    </view>
+</view>
+<block wx:for="{{ cinemas }}">
+    <navigator class="cinema-navi" catchtap="onTapNavi" data-url="./cinema?cinemaId={{item.cinemaId}}&movieId={{movie.movieno}}&movieName={{movie.name}}&day={{day}}&cinemaName={{item.cinemaName}}&cinemaAddress={{item.cinemaAddress}}&latitude={{item.latitude}}&longitude={{item.longitude}}&cinemaTelephone={{item.cinemaTelephone}}">
+        <view class="cinema-container one-px-border-bottom cinema-main">
+            <view class="cinema-cnt">
+                <view class="label" wx:if="{{ item.mark === 3 }}">会员</view>
+                <view class="label" wx:if="{{ item.mark === 2 }}">常去</view>
+                <view class="label" wx:if="{{ item.mark === 1 }}">常去</view>
+                <view class="cinema-name text-ellipsis">{{ item.cinemaName }}</view>
+                <view class="price" wx:if="{{item.showPrice}}"><text class="num">{{ item.sellPrice }}</text><text>元起</text></view>
+                <view class="address text-ellipsis">{{ item.cinemaAddress }}</view>
+                <view class="distance" wx:if="{{item.distance}}">{{ item.distance }}</view>
+                <view class="tag-list">
+                    <view wx:if="{{item.tag.sell}}">座</view>
+                    <view wx:if="{{item.tag.deal}}">团</view>
+                    <block wx:for="{{item.tag.hallType}}">
+                        <view>{{item}}</view>
+                    </block>
+                    <view wx:if="{{item.tag.allowRefund}}">退</view>
+                    <view wx:if="{{item.tag.endorse}}">改签</view>
+                    <view wx:if="{{item.tag.snack}}" class="featrue">小吃</view>
+                    <view wx:if="{{item.tag.vipTag}}" class="featrue">{{item.tag.vipTag}}</view>
+                    <view wx:if="{{item.promotion.platformActivityTag}}" class="vip">惠</view>
+                </view>
+                <scroll-view class="plist-container" scroll-x="true" wx:if="{{item.plist && item.plist.length}}">
+                    <view class="plist">
+                        <block wx:for="{{item.plist}}" wx:for-item="p">
+                            <navigator class="show" catchtap="tapShow" data-status="{{p.ticketStatus}}" data-id="{{p.showId}}" data-seqno="{{p.seqNo}}" data-day="{{day}}">
+                                <view wx:if="{{p.nextDay}}" class="next-day">次日放映</view>
+                                <view class="tm">{{p.tm}}</view>
+                                <view class="cat">{{p.lang}}{{p.tp}}</view>
+                                <view class="pr" wx:if="{{p.ticketStatus === 1}}">座位已满</view>
+                                <view class="pr" wx:else>{{p.sellPr}}元</view>
+                            </navigator>
+                        </block>
+                    </view>
+                </scroll-view>
+                <block wx:else></block>
+                <view class="address">近期场次：{{item.nearlyShowtime}}</view>
+            </view>
+            <view>
+                <block wx:if="{{false}}">
+                    <view>
+                        <view class="cinema-origin">
+                            <text>原价</text>
+                            <text>23</text>
+                            <text>元起</text>
+                        </view>
+                        <view class="cinema-sale">
+                            <text>特惠</text>
+                            <text>19</text>
+                            <text>元起</text>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="cinema-num">
+                        <view>
+                            <text>{{item.lowestPrice / 100}}</text>
+                            <text>元</text>
+                        </view>
+                        <text>起</text>
+                    </view>
+                </block>
+                <view class="cinema-tips" wx:if="{{item.offerInfo}}">{{item.offerInfo}}</view>
+            </view>
+        </view>
+    </navigator>
+</block>
+<view wx:if="{{ dates.length === 0 || cinemas.length === 0 }}" class="no-cinema error-page middle-center-page">
+    <image class="profile-empty" src="/images/profile-empty.png" /><text class="title">暂无该影片的影院信息</text></view><template is="city-error" data="{{isShowCityErrorPage, isShowOpenLocationAlertMoal, isShowUseLocationCityConfirmModal, locationCity}}" /><template is="city-error-modal" data="{{isShowCityErrorPage, isShowOpenLocationAlertMoal, isShowUseLocationCityConfirmModal, locationCity, mallDialogInfo}}"
+/>

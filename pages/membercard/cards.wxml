@@ -1,0 +1,1 @@
+<import src="_card.wxml"/><view class="page-movie-card"><block wx:for="{{ cards }}" wx:key="{{index}}"><template is="membercard" data="{{ ...item }}"/></block></view><view class="btn-cards mod-flexbox-hv-c"><button class="opencard" bindtap="addCoupons">绑卡</button></view><include src="/footer.wxml" />

@@ -1,0 +1,288 @@
+<form report-submit bindsubmit="onSubmit" data-cinemaid="{{ order.cinemaId }}" data-movieid="{{ order.movieId }}" data-moviename="{{ order.movieName }}">
+    <scroll-view scroll-y="true" style="{{ modal.page }}" hidden="{{hiddenWrap}}">
+        <view class="buy">
+            <view class="order-details-header">
+                <view class="mod-flexbox order-details-info">
+                    <view class="mod-flex-1">
+                        <view class="box-title"><text class="title">{{order.movieName}}</text></view>
+                        <view class="box-desc"><text class="desc">{{ order.orderShowTime }}（{{ order.movieLanguage }}{{ order.movieVersion }}）</text></view>
+                        <view class="mod-flexbox-c order-details-oter">
+                            <view class="mod-flex-1">
+                                <view class="mod-flexbox-c desc-address">
+                                    <view class="mod-icons-film"></view>
+                                    <view class="mod-flex-1"><text class="desc">{{order.cinemaName}}</text></view>
+                                </view>
+                                <view class="mod-flexbox-c desc-box">
+                                    <view class="mod-icons-half"></view>
+                                    <view class="mod-flex-1"><text class="desc">{{order.orderSeats}}</text></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="aside">
+                        <view class="mod-img140196 images">
+                            <image mod="aspectFill" src="{{order.movieEntity.movieVerticalImage}}" />
+                        </view>
+                        <view class="time-left">{{migrate.migrating?'您正在改签，':''}}支付剩余时间：{{ timeleft }}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="mod-line-20"></view>
+        <view class="mod-flexbox-c buy-title active" bindtap="showActiveDlg" hidden>
+            <view class="mod-flex-1">特惠活动</view>
+            <view class="active-num">
+                <text class="active-curr">-22.2元</text>
+                <text class="arrow"></text>
+            </view>
+        </view>
+        <view class="mod-flexbox-c buy-title">
+            <view class="mod-flex-1 box-title"><text class="title">票价总计</text></view>
+            <view class="box-desc"><text class="desc">（含服务费{{order.seatServiceFee/100}}元/张）</text><text class="pricee mod-fc-primary"> ￥{{ order._totalPrice / 100 }}</text></view>
+        </view>
+        <view class="mod-line-20"></view>
+        <view class="price-cells panel list-view" style="margin:0;">
+            <view class="list-view-item">
+                <view class="clearfix">
+                    <view class="pull-left">优惠券</view>
+                    <view class="pull-right" bindtap="onTapMerchantCoupon" data-goodsType="2"><text class="desc">{{availableList.length > 0 ? (checkedText != '' && goodsType == 2 ? checkedText : '去使用') : '无可用'}}</text><text class="color-red"></text><text class="arrow"></text></view>
+                </view>
+            </view>
+            <view class="list-view-item">
+                <view class="clearfix">
+                    <view class="pull-left">红包</view>
+                    <view class="pull-right" bindtap="onTapMerchantCoupon" data-goodsType="3"><text class="desc">{{redPacket.length > 0 ? (checkedText != '' && goodsType == 3 ? checkedText : '去使用') : '无可用'}}</text><text class="color-red"></text><text class="arrow"></text></view>
+                </view>
+            </view>
+            <view class="list-view-item">
+                <view class="clearfix">
+                    <view class="pull-left">观影卡</view>
+                    <view class="pull-right" bindtap="onTapMaoyanActivityAndCoupon" data-goodsType="1"><text class="desc">{{cards.length > 0 ? (checkedText != '' && goodsType == 1 ? checkedText : '去使用') : '无可用'}}</text><text class="color-red"></text><text class="arrow"></text></view>
+                </view>
+            </view>
+            <view class="list-view-item" catchtap="switchCheckPointsCatch" wx:if="{{order.scoreRateEnabled}}">
+                <view class="clearfix">
+                    <view class="pull-left">
+                        <text>积分</text>
+                        <text class="points-tip">共{{order.mallcooScore}}积分，可用积分{{order.dedeductionScore}}，可抵{{order.dedeductionAmount / 100}}元</text>
+                    </view>
+                    <view class="pull-right">
+                        <switch color="#00958e" data-num="{{order.dedeductionAmount}}" disabled="{{disSwitch}}" bindchange="switchCheckPoints" />
+                    </view>
+                </view>
+            </view>
+        </view>
+        <block wx:for="{{ priceCells }}" wx:key="name"><template is="{{ item.name }}" data="{{...item}}" /></block><template name="guideDiscountCard"><view class="list-view-item"><view class="clearfix"><view class="pull-left">{{ display }}</view><view class="pull-right" bindtap="onGuideDiscountCard" data-guidelink="{{ ext.guideLink }}"><text class="desc">{{ ext.prefInfo }}</text><text class="color-red">{{ ext.guideText }}</text><text class="arrow"></text></view></view></view></template>
+        <template
+            name="discountCard">
+            <view class="list-view-item">
+                <view class="flex flex-between">
+                    <view class="discountCard-left flex flex-middle">{{ display }}
+                        <view wx:if="{{ ext.name }}" class="desc color-orange">{{ ext.name }}</view>
+                    </view>
+                    <view class="discountCard-right">
+                        <block wx:if="{{ ext.grey }}"><span class="color-orange">{{ ext.greyText }}</span></block>
+                        <block wx:else>{{ ext.desc }}
+                            <switch checked="{{ ext.withDiscountCard }}" bindchange="onSwitchDiscountCard"></switch>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            </template><template name="maoyanActivityAndCoupon"><view class="list-view-item" bindtap="onTapMaoyanActivityAndCoupon"><view class="clearfix"><view class="pull-left">活动和优惠券<view wx:if="{{ ext.activityName }}" class="desc color-orange">{{ ext.activityName }}</view></view><view class="pull-right">{{ ext.desc }}<text class="arrow"></text></view></view></view></template>
+            <template
+                name="merchantCoupon">
+                <view wx:if="{{ ext.availableList.length > 0 }}" class="list-view-item" bindtap="onTapMerchantCoupon">
+                    <view class="clearfix">
+                        <view class="pull-left">{{ display }}</view>
+                        <view class="pull-right">{{ ext.desc }}<text class="arrow"></text></view>
+                    </view>
+                </view>
+                </template><template name="migrate"><view class="list-view-item"><view class="clearfix"><view class="pull-left">{{ display }}</view><view class="pull-right color-red">{{ ext.desc }}</view></view></view></template>
+                <block wx:if="{{migrate.display}}">
+                    <view wx:if="{{migrate.migrating}}" class="panel migrate">
+                        <view class="panel-title list-view-item">
+                            <view class="clearfix">
+                                <view class="pull-left">改签</view>
+                                <view class="pull-right"><text class="desc">手续费{{migrate.seatCommissionMoney}}元/张</text><text class="color-red">{{migrate.commissionMoney}}</text><text class="color-red font-size-small">元</text></view>
+                            </view>
+                        </view>
+                        <view class="panel-content">
+                            <view class="tips">
+                                <view wx:for="{{migrateTip}}" wx:key="*this">{{item}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="panel migrate-tips"><text class="panel-title">退改签须知</text>
+                        <view class="panel-content" bindtap="togglePanel">
+                            <view class="tips {{refundMigrateTip.length>4 && !panelExpand? 'tips-expand-false': ''}}">
+                                <view wx:for="{{refundMigrateTip}}" wx:key="*this">{{item}}</view>
+                            </view>
+                            <view wx:if="{{refundMigrateTip.length>4}}" class="expandPanel">
+                                <image class="icon icon-expand-{{panelExpand}}" src="/images/expand-arrow.png" />
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <view class="mod-line-20"></view>
+                <view class="panel mobile">
+                    <view class="panel-content">
+                        <view class="list-view-item flex flex-row-center">
+                            <view bindtap="onTapMobilePhoneLabel" class="mobile-key">手机号</view>
+                            <view class="mobile"><text>{{order.mobile}}</text></view>
+                        </view>
+                    </view>
+                    <view class="panel-footer margin-left">手机号用户生成订单，购票成功后，会收到取票码短信；该场次不可改签；该场次不可退票；</view>
+                </view>
+                <modal confirm-text="知道了" no-cancel hidden="{{ modalHidden }}" bindconfirm="onModalConfirm">
+                    <view style="text-align: center;" wx:if="{{timeover}}"><text style="font-size: 34rpx;color:#000;">支付超时，该订单已失效</text>
+                        <view style="font-size: 26rpx;color:#999;margin-top: 20rpx;">请重新购买</view>
+                    </view>
+                    <view style="text-align: center;" wx:else><text style="font-size: 28rpx;color:#000">{{modalText}}</text></view>
+                </modal>
+                <view style="height: 220rpx;"></view>
+    </scroll-view>
+    <view class="pay-container one-px-border-both" hidden="{{hiddenWrap}}">
+        <view class="tips-container flex">
+            <view class="tips-text">
+                <view wx:if="{{!!migrate.desc}}" class="flex {{!!migrate.migratable? 'tip': 'tip-disabled'}}">
+                    <image src="/images/order/{{theme}}support-{{!!migrate.migratable}}.png" class="tip-icon"></image>{{ migrate.desc }}</view>
+                <view wx:if="{{!!refund.desc}}" class="flex {{!!refund.refundable? 'tip': 'tip-disabled'}}">
+                    <image src="/images/order/{{theme}}support-{{!!refund.refundable}}.png" class="tip-icon"></image>{{ refund.desc }}</view>
+            </view>
+            <view class="tips-money"><text class="desc">{{payTip}}</text><text class="money">{{order.totalPrice / 100}}</text><text class="money" style="font-size: 24rpx">元</text></view>
+        </view>
+        <button class="btn-pay" form-type="submit" bindtouchstart="onTouchStartSubmit" report-submit="true">{{submitBtnName}}</button>
+        <!-- <navigator class="btn-pay" bindsuccess="navSuccess" bindfail="navFail" target="miniProgram" hover-class="none" open-type="navigate" app-id="wx224d6de07f908e3d" path="pages/wuyue_pay/wuyue_pay" extra-data="{{sendParam}}" version="develop">确认订单</navigator> -->
+    </view>
+</form>
+<view wx:if="{{ modal.merchantCoupon }}" style="{{ modal['overlay-merchantCoupon'] }}" bindtap="onTapConfirmMerchantCoupon">
+    <view class="merchant-coupon flex-column" style="{{ modal.merchantCoupon }}" catchtap="doNothing">
+        <template is="merchantCouponModal" data="{{ couponList: couponList, checkedText: checkedText, selectGoodsType: selectGoodsType }}" />
+        <template name="merchantCouponModal">
+            <view class="coupon-header">
+                <text class="title">{{selectGoodsType == 1 ? '观影卡' : (selectGoodsType == 2 ? '优惠券' : '红包')}}</text>
+                <view hidden class="coupon-cancel" catchtap="doNothing">取消</view>
+            </view>
+            <view class="flex-content" style="background: white;">
+                <!-- <view wx:if="{{selectGoodsType == 2}}" class="mod-flexbox-c coupon-add">
+                    <button class="add-btn">添加</button>
+                </view> -->
+                <scroll-view class="modal-content" scroll-y="true">
+                    <view wx:if="{{ couponList[0] == null }}" class="modal-content-empty">{{selectGoodsType == 1 ? '暂时没有可用观影卡' : (selectGoodsType == 2 ? '暂时没有可用优惠券' : '暂时没有可用红包')}}</view>
+                    <block wx:elif="{{ couponList[0] }}">
+                        <view class="coupon-item flex" wx:for="{{ couponList }}" wx:key="key" bindtap="onTapMerchantCouponItem" data-checked="{{item.checked}}" data-index="{{ index }}" data-selectGoodsType="{{selectGoodsType}}">
+                            <view class="flex-col-1">
+                                <icon type="{{ item.checked ? 'success' : 'circle' }}" color="{{ theme=='my'?'red':'rgb(9,187,7)' }}"/>
+                            </view>
+                            <view class="flex-col-2 flex-column-center coupon-item-type-1 {{ item.validDays > 0 ? '' : 'disabled' }}">
+                                <block wx:if="{{selectGoodsType == 2}}">
+                                    <view class="item-price">
+                                        <text>兑换卷</text>
+                                    </view>
+                                </block>
+                                <block wx:else>
+                                    <view class="item-price">
+                                        <view>
+                                            <text class="font-size-largest">{{ item.amount / 100 }}</text>
+                                            <text class="font-size-big">元</text>
+                                        </view>
+                                        <view class="item-type-desc">{{selectGoodsType == 2 ? '优惠券' : '红包'}}</view>
+                                    </view>
+                                </block>
+                            </view>
+                            <view class="flex-col-3 flex-column">
+                                <view class="item-name text-ellipsis">{{ item.goodsName }}</view>
+                                <view class="flex-content item-desc">{{ item.goodsDescription }}</view>
+                                <view class="item-footer flex-footer">
+                                    <view>
+                                        <view class="item-footer-right">{{item.startTime}} 至 {{item.endTime}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </scroll-view>
+            </view>
+            <view wx:if="{{ couponList[0] }}" class="flex-footer flex panel modal-footer">
+                <view class="flex-col-4">{{ checkedText }}</view>
+                <view class="flex-col-2">
+                    <button bindtap="onTapConfirmMerchantCoupon" data-selectGoodsType="{{selectGoodsType}}">确定</button>
+                </view>
+            </view>
+        </template>
+    </view>
+</view>
+<view wx:if="{{ modal.maoyanActivityAndCoupon }}" style="{{ modal['overlay-maoyanActivityAndCoupon'] }}" bindtap="onTapConfirmMaoyanActivityAndCoupon">
+    <view class="activity-and-coupon flex-column" style="{{ modal.maoyanActivityAndCoupon }}" catchtap="doNothing">
+        <template is="maoyanActivityAndCouponModal" data="{{ cards:cards, checkedText: checkedText }}" />
+        <template name="maoyanActivityAndCouponModal">
+            <view class="flex-content">
+                <scroll-view class="modal-content" scroll-y="true">
+                    <view class="modal-content-empty" wx:if="{{ cards[0] == null }}">暂时没有可用电影卡</view>
+                    <block wx:elif="{{ cards[0] }}">
+                        <view class="coupon-item flex" data-checked="{{item.checked}}" data-index="{{ couponIndex }}" wx:for="{{ cards }}" wx:for-index="couponIndex" wx:key="code" bindtap="onTapMaoyanCouponItem">
+                            <view class="flex-col-1"><icon type="{{ item.checked ? 'success' : 'circle' }}" color="{{ theme=='my'?'red':'rgb(9,187,7)' }}"></icon></view>
+                            <view class="membercard-new" data-id="{{ eMemberCardId || ememberCardId }}" style="background-color:{{backgroundColor}}">
+                                <view class="membercard-section">
+                                    <view class="membercard-price">{{item.availableBalance / 100}}元</view>
+                                    <view class="membercard-info">有效期：{{item.validDays}}天（{{item.startTime}} 至 {{item.endTime}}）</view>
+                                </view>
+                                <view class="membercard-aside">卡号：{{item.number}}</view>
+                                <!-- <view class="type">{{ item.name }}</view>
+                                <view class="desc">
+                                    <block wx:for="{{ giftDesc }}">
+                                        <text class="{{ index==1 || index==3 ? 'bigger' : '' }}">{{item}}</text>
+                                    </block>
+                                </view>
+                                <view class="card-right">{{ item.expireDesc }}</view>
+                                <view class="price">
+                                    <icon type="success" size="14" color="#fff">{{item.statusDesc}}</icon>
+                                </view> -->
+                            </view>
+                        </view>
+                    </block>
+                </scroll-view>
+            </view>
+            <view wx:if="{{ cards[0] }}" class="flex-footer flex modal-footer">
+                <view class="flex-col-4">{{ checkedText }}</view>
+                <view class="flex-col-2">
+                    <button bindtap="onTapConfirmMaoyanActivityAndCoupon">确定</button>
+                </view>
+            </view>
+        </template>
+    </view>
+</view>
+<view class="confirm-pay" wx:if="{{isConfirmPay}}">
+    <view class="cp-main">
+        <view class="cp-tip">已优惠 {{deductionAmount/100}} 元</view>
+        <view>
+            <!-- <navigator class="btn-pay" bindsuccess="navSuccess" bindfail="navFail" target="miniProgram" hover-class="none" open-type="navigate" app-id="wx224d6de07f908e3d" path="pages/wuyue_pay/wuyue_pay" extra-data="{{sendParam}}" version="release">去支付</navigator> -->
+            <view class="btn-pay" bindtap="onALiPay">去支付</view>
+        </view>
+    </view>
+</view>
+<include src="/footer.wxml" />
+
+<view class="dialog" hidden="{{hiddenActiveDlg}}">
+    <view class="dialog-mask" bindtap="hideActiveDlg"></view>
+    <view class="dialog-content">
+        <view class="active-dlg-title">特惠活动</view>
+        <radio-group>
+            <view>
+                <label>
+                    <view>不参加活动</view>
+                    <radio color="#00958e"></radio>
+                </label>
+            </view>
+            <view>
+                <label>
+                    <view>
+                        <text>参加活动</text>
+                        <text>共优惠22.2元</text>
+                    </view>
+                    <radio color="#00958e"></radio>
+                </label>
+            </view>
+        </radio-group>
+    </view>
+</view>

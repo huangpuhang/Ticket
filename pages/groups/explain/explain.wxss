@@ -1,0 +1,1 @@
+.explain-header{height:205rpx}.explain-content{padding:30rpx}.explain-content .desc,.explain-content .title{display:block}.explain-content .title{font-size:30rpx;font-weight:700}.explain-content .title{margin:30rpx 0}.explain-content .desc{line-height:1.2;margin-top:10rpx;font-size:28rpx;text-indent:40rpx}

@@ -1,0 +1,1 @@
+<view animation="{{ cbtcAnimationHide }}" wx:if="{{ isShowCityToast }}" class="city-button-toast-container"><view class="city-button-toast-content">请确认当前所在城市哦～</view></view>

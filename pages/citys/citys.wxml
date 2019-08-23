@@ -1,0 +1,60 @@
+<template name="cityItem">
+  <view wx:if="{{ id }}" class="city-item {{ isLast ? 'last' : '' }}" bindtap="selectCity" data-nm="{{nm}}" data-id="{{id}}">{{nm}}</view>
+</template>
+<block wx:if="{{ letterArray.length }}">
+  <view class="nav" catchtouchmove="move">
+    <view wx:for="{{navList}}" wx:for-index="index" data-top="{{item.top}}" data-id="{{item.label}}" bindtap="navTo">
+      <view class="{{item.label.length == 1 ? 'nav-letter' : ''}}">{{ labelMap[item.label] ? labelMap[item.label] : item.label }}</view>
+    </view>
+  </view>
+  <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height: 100%;" scroll-into-view="{{toView}}">
+    <view>
+      <view id="location" class="city-title">定位城市</view>
+      <view class="city-list city-list-inline clearfix">
+        <template wx:if="{{ locationStatus === 'done' }}" is="cityItem" data="{{...locationCity}}" />
+        <view class="city-item" style="width: 350rpx;" wx:if="{{ locationStatus != 'done' }}" bindtap="onTapFillLocationCity">{{ locationMap[locationStatus] }}</view>
+      </view>
+    </view>
+    <view wx:if="{{historyCityList.length}}">
+      <view id="history" class="city-title">最近访问城市</view>
+      <view class="city-list city-list-inline clearfix">
+        <block wx:for="{{historyCityList}}">
+          <template is="cityItem" data="{{...item}}" />
+        </block>
+      </view>
+    </view>
+    <view wx:if="{{hotCityList.length}}">
+      <view id="hot" class="city-title">热门城市</view>
+      <view class="city-list city-list-inline clearfix">
+        <block wx:for="{{hotCityList}}">
+          <template is="cityItem" data="{{...item}}" />
+        </block>
+      </view>
+    </view>
+    <view wx:if="letterArray.length">
+      <block wx:for="{{letterArray}}" wx:for-item="letterInfo">
+        <view id="{{letterInfo.letter}}" class="city-title city-title-letter">{{letterInfo.letter}}</view>
+        <view class="city-list city-list-block clearfix">
+          <block wx:for="{{letterInfo.list}}" wx:for-index="index">
+            <template is="cityItem" data="{{...item, isLast: index + 1 == letterInfo.list.length}}" />
+          </block>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</block>
+<view class="popup" hidden="{{hiddenMallList}}">
+  <view class="popup-mask" bindtap="hideMallList"></view>
+  <view class="popup-wrap">
+    <view class="popup-list">
+      <view class="popup-item" wx:for="{{mallList}}" wx:key="{{index}}" data-mall="{{item}}" bindtap="chooseMall">
+        <view class="popup-item-intro">
+          <view>{{item.name}}</view>
+          <view>{{item.address}}</view>
+        </view>
+        <view class="popup-item-distance">{{item.distance}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<include src="/footer.wxml" />

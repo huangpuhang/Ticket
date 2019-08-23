@@ -1,0 +1,1 @@
+@import "_coupon.wxss";.add_coupons{padding:30rpx}.add_coupons .info text{font-size:24rpx;color:#999;padding-bottom:30rpx}.add_coupons .info .strong{color:#fc6120}.add_coupons .inputs{border:1rpx solid #999;border-radius:6rpx;margin:0 0 30rpx 0;height:88rpx;padding:0 20rpx;box-sizing:border-box}.btn-add.btn80{height:80rpx;font-size:36rpx}

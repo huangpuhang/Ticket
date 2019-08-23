@@ -1,0 +1,30 @@
+<view class="page-myred">
+    <view wx:if="{{type === 4}}" class="myred-banner" catchtap="onTapNavi" data-url="/pages/activity/index">
+        <image src="/assets/images/myred-banner.jpg" />
+    </view>
+    <view class="red-content">
+        <view class="red-items mod-flexbox {{item.status != 1 ? 'red-over' : ''}}" wx:for="{{ coupons }}" wx:key="index">
+            <image wx:if="{{item.status != 1}}" src="{{item.status == 2 ? '../../images/coupon2.png' : '../../images/coupon3.png'}}" mode="widthFix" class="red-item-img"></image>
+            <view class="price over mod-flexbox-hv-c">
+                <block wx:if="{{type === 2}}">
+                    <text>兑换卷</text>
+                </block>
+                <block wx:else>
+                    <text wx:if="{{item.availableBalance > 0}}" class="title">¥{{item.availableBalance / 100}}</text>
+                </block>
+            </view>
+            <view class="mod-flex-1 section mod-flexbox mod-flexbox-v">
+                <view class="box-title mod-flex-1"><text class="title">{{item.title}}</text></view>
+                <view wx:if="{{type == 2}}" class="tips">{{item.goodsDescription}}</view>
+                <view wx:if="{{item.validDays > 0}}" class="box-desc mod-flexbox-c">
+                    <view class="mod-flex-1"><text class="desc">{{item.startTime}} 至 {{item.endTime}}</text></view></view>
+            </view>
+        </view>
+        <view wx:if="{{coupons && coupons.length === 0}}" class="error-page middle-center-page">
+            <view wx:if="{{type === 2}}" class="btn-cards mod-flexbox-hv-c"><button class="opencard" bindtap="addCoupons">添加优惠券</button></view>
+            <image src="/images/profile-empty.png" /><text class="title">{{type == 2 ? '暂无可用的优惠券' : '暂无可用的红包'}}</text>
+        </view>
+    </view>
+    <view wx:if="{{type === 2}}" class="btn-cards mod-flexbox-hv-c"><button class="opencard" bindtap="addCoupons">添加优惠券</button></view>
+</view>
+<include src="/footer.wxml" />

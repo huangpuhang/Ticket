@@ -1,0 +1,32 @@
+<view class="wrap item-flexbox-v" hidden="{{hiddenWrap}}">
+  <view wx:if="{{orderStatus == 0}}" class="ticket-loading">
+    <icon type="waiting" size="50" color="#00968e"/>
+    <text>出票中...</text>
+  </view>
+  <view wx:else class="page-end">
+    <view wx:if="{{orderStatus == 100}}">
+      <icon type="success" size="60" color="#00968e" />
+      <text class="en">Good Luck</text>
+      <text class="cn">购票成功</text>
+    </view>
+    <view wx:else>
+      <icon type="cancel" size="60" color="red" />
+      <text class="cn order_fail">出票失败</text>
+      <!-- <text class="en order_tip">请联系客服退款，客服电话：4008-123-867</text> -->
+    </view>
+  </view>
+
+  <!--page-end-->
+  <view class="page-info item-flex">
+    <view class="infobg">
+      <text class="title">{{orderInfo.movieName}}</text>
+      <text class="address">{{orderInfo.cinemaName}}</text>
+      <text class="info">{{orderInfo.movieVersion}} {{orderInfo.hallName}} {{orderInfo.showtime}}</text>
+      <view class="seatbox">
+        <text>{{orderInfo.seatName}}</text>
+      </view>
+    </view>
+    
+    <view class="btn-nav" bindtap="gotoMethod">{{orderStatus == 100 ? '查看订单详情' : orderStatus == 110 ? '返回首页' : ''}}</view>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+page {
+    background: #f5f5f5
+}
+.login-box-button {
+    width: 236rpx;
+    height: 66rpx;
+    line-height: 66rpx;
+    font-size: 24rpx;
+    color: #666;
+    margin: 200rpx auto 0;
+    z-index: 10;
+    background-color: #fff;
+    left: 0
+}
+.tip {
+    position: fixed;
+    bottom: 76rpx;
+    text-align: center;
+    color: #00958e;
+    width: 100%;
+    font-size: 24rpx;
+}

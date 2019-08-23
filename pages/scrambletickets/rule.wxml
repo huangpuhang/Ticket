@@ -1,0 +1,27 @@
+<view class="page-rule">
+  <view class="mod-bg-primary mod-flexbox-v-c rule-header">
+    <text class="title">公开公正的抽奖公式：</text>
+    <text class="desc">幸运号码 =（本商品的成团时间 / 参与号码个数）的余数+原始数100001</text>
+  </view>
+  <view class="rule-content">
+    <view class="rule-dl">
+      <text class="mod-fc-primary rule-dt">幸运号码计算规则</text>
+      <view class="rule-dd">
+        <text class="rule-desc">将本商品的成团时间(得出数值A)(每个时间按时、分、秒、毫秒的顺序组合，如20:15:25.362则201525362)</text>
+        <text class="rule-desc">数值A除以数值B得到的余数+原始数1001，得到最终幸运号码，拥有该号码者，直接获得该商品</text>
+      </view>
+    </view>
+    <view class="rule-dl">
+      <text class="mod-fc-primary rule-dt">拼团规则</text>
+      <view class="rule-dd">
+        <text class="rule-desc">点击立即参与，支付成功后参与本期活动，获得一个参与号码，号码按时间顺序发送</text>
+        <text class="rule-desc">参与后可以将商品分享给好友或群聊</text>
+        <text class="rule-desc">邀请用户支付商品视为邀请成功，您将额外获得一个参与号码，可参与下期抽奖</text>
+        <text class="rule-desc">参与名额（成功支付人数）达到100个，则开始抽奖。每个用户可以购买50个订单，占有多个参与号码加大概率</text>
+        <text class="rule-desc">抽奖过程透明且真实有效，人数一旦满额，我们会根据抽奖公式进行抽奖，获得幸运号码的用户即为中奖者，我们会第一时间将商品发送给中奖用户，一切公平公正公开</text>
+        <text class="rule-desc">抽奖活动的一切解释归星轶电影所有</text>
+      </view>
+    </view>
+  </view>
+</view>
+<include src="/footer.wxml" />

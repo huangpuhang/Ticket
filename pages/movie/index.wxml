@@ -1,0 +1,77 @@
+<import src="_movie.wxml" />
+<import src="_red.wxml" />
+<import src="../search/_search-bar.wxml" />
+<view style="position: {{disableScroll}}">
+  <template is="search-bar" data="{{ city, mallName, mallDialogInfo, isShowCityToast, cbtcAnimationHide, type: -1, placeholder: '找影视剧、影院', from: 'movie' }}" />
+  <block wx:if="{{banner && banner.length}}">
+    <swiper autoplay circular interval="4000" duration="500" class="banner">
+      <block wx:for="{{banner}}" wx:for-item="bannerItem" wx:key="index">
+        <swiper-item>
+          <view class="swiper-item-wrap" catchtap="onTapNavi" data-url="/pages/cinema/movie?movieId={{ bannerItem.movieId }}">
+            <image src="{{'http://' + bannerItem.imagePath}}" class="slide-image" class="banner" mode="aspectFill" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </block>
+  <view wx:if="{{displayComingSoon}}" class="header-tabs-container">
+    <view class="header-tab {{ activeTab === 'hot' ? 'active' : '' }}" bindtap="switchToHot" data-val_bid="b_h4xc6w04" data-val_lab="{ type: 'hot' }">正在热映</view>
+    <view class="header-tab {{ activeTab === 'coming' ? 'active' : '' }}" bindtap="switchToComing" data-val_bid="b_h4xc6w04" data-val_lab="{ type: 'coming' }">即将上映</view>
+  </view>
+  <view hidden="{{activeTab === 'coming'}}">
+    <view class="list-view">
+      <view wx:for="{{ movies }}" wx:for-item="movie" wx:key="{{index}}" class="list-view-item">
+        <template is="movie" data="{{ ...movie, from:'hotMovies', bid:'b_yfrrrhw1', activeTab: activeTab }}" />
+      </view>
+      <view class="load-more" wx:if="{{ hasMore && movies && movies.length }}" bindtap="onReachBottom">加载更多...</view>
+    </view>
+    <template is="city-error" data="{{isShowCityErrorPage, isShowOpenLocationAlertMoal, isShowUseLocationCityConfirmModal, locationCity}}" />
+    <view wx:if="{{ movies && movies.length === 0}}" style="z-index: -1;" class="error-page middle-center-page">
+      <image src="/images/home-empty.png" />
+      <text class="title">暂无热映电影</text>
+    </view>
+  </view>
+  <view hidden="{{activeTab === 'hot'}}">
+    <view class="list-view" wx:if="{{ coming.length }}">
+      <view wx:for="{{ coming }}" wx:for-item="movie" wx:key="{{index}}" class="list-view-item">
+        <template is="movie" data="{{ ...movie, from:'hotMovies', bid:'b_yfrrrhw1', activeTab: activeTab }}" />
+      </view>
+    </view>
+    <template is="red" data="{{showRed, userId}}" />
+  </view>
+  <template is="city-error-modal" data="{{isShowCityErrorPage, isShowOpenLocationAlertMoal, isShowUseLocationCityConfirmModal, locationCity, mallDialogInfo}}" />
+  <view wx:if="{{showSearchBar}}" class="modal-search">
+    <view class="modal-body show-body">
+      <view class="srach-input">
+        <image src="/images/search-icon.png" />
+        <input focus="{{focus}}" type="search" placeholder="搜影片、搜影院" />
+      </view>
+      <view class="search-reault">
+        <text class="title">历史搜索</text>
+        <view class="search-label">
+          <view class="item-label">
+            <text>西红柿首富</text>
+            <image src="/images/cancel-selected.png" />
+          </view>
+          <view class="item-label">
+            <text>无双</text>
+            <image src="/images/cancel-selected.png" />
+          </view>
+          <view class="item-label">
+            <text>变形金刚</text>
+            <image src="/images/cancel-selected.png" />
+          </view>
+          <view class="item-label">
+            <text>大时代</text>
+            <image src="/images/cancel-selected.png" />
+          </view>
+          <view class="item-label">
+            <text>千与千寻</text>
+            <image src="/images/cancel-selected.png" />
+          </view>
+        </view>
+      </view>
+      <view class="search-btns" bindtap="srachBar" data-type="hide">收起</view>
+    </view>
+  </view>
+</view>

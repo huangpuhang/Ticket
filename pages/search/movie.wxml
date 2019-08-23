@@ -1,0 +1,1 @@
+<import src="/pages/movie/_movie.wxml"/><view class="list-view"><view class="list-view-item" wx:for="{{ movies }}" wx:for-item="movie" wx:key="{{index}}"><template is="movie" data="{{ ...movie }}"/></view></view><include src="/footer.wxml" />

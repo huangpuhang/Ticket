@@ -1,0 +1,57 @@
+<view class="page-order-details" hidden="{{hiddenWrap}}">
+    <view class="order-details-header">
+        <view class="mod-flexbox order-details-info">
+            <view class="mod-flex-1"><text class="title">{{order.movieName}}</text><text class="desc">{{order.showTimeStr}}（{{order.movieLanguage}}{{order.movieVersion}}）</text></view>
+            <view class="mod-img140196 images">
+                <image mod="aspectFill" src="{{order.movieEntity.movieVerticalImage}}" />
+            </view>
+        </view>
+        <view class="mod-flexbox-c order-details-oter">
+            <view class="mod-flex-1">
+                <view class="mod-flexbox desc-address">
+                    <view class="mod-icons-film"></view>
+                    <view class="mod-flex-1"><text class="desc">{{order.cinemaName}}</text></view>
+                </view>
+                <view class="mod-flexbox desc-box">
+                    <view class="mod-icons-half"></view>
+                    <view class="mod-flex-1"><text class="desc">7号厅 {{order.seatName}}</text></view>
+                </view>
+            </view>
+            <view class="mod-flexbox-c tool">
+                <view class="mod-icons-map" bindtap="showMap"></view>
+                <view wx:if="{{order.cinemaEntity.cinemaTelephone != ''}}" class="mod-icons-mobile" bindtap="makePhoneCall" data-phone="{{order.cinemaEntity.cinemaTelephone}}"></view>
+            </view>
+        </view>
+    </view>
+    <view class="order-details-content">
+        <view class="code-box code-end">
+            <!-- <image class="playend" src="/assets/images/order-playend.png" /> -->
+            <text class="title">取电影票</text>
+            <view class="qrcode" wx:if="{{order.qrCode && order.showQrCode}}">
+                <image src="{{order.qrCode}}" mode="widthFix"></image>
+            </view>
+            <text class="desc" wx:if="{{order.printNo}}">取票码：{{order.printNo}}</text>
+            <text class="desc" wx:if="{{order.verifyCode}}">验证码：{{order.verifyCode}}</text>
+            <!-- <view class="code-images"></view> -->
+        </view>
+    </view>
+    <view class="order-details-footer">
+        <view class="mod-flexbox-c items">
+            <view class="label"><text class="desc">订单号：</text></view>
+            <view class="mod-flex-1"><text class="desc">{{order.externalShowtimeCode}}</text></view>
+        </view>
+        <view class="mod-flexbox-c items">
+            <view class="label"><text class="desc">购买时间：</text></view>
+            <view class="mod-flex-1"><text class="desc">{{order.orderTime}}</text></view>
+        </view>
+        <view class="mod-flexbox-c items">
+            <view class="label"><text class="desc">手机号：</text></view>
+            <view class="mod-flex-1"><text class="desc">{{order.mobile}}</text></view>
+        </view>
+        <view class="mod-flexbox-c items">
+            <view class="label"><text class="desc">总价：</text></view>
+            <view class="mod-flex-1"><text class="desc">￥{{order.totalPrice / 100}}（{{order.seatCount}}张）</text></view>
+        </view>
+    </view>
+</view>
+<include src="/footer.wxml" />
